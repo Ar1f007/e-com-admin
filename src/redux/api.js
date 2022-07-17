@@ -1,4 +1,5 @@
 import { publicRequest } from '../config/axios';
+import { getProductFailure, getProductStart, getProductSuccess } from './productSlice';
 import { loginFailure, loginStart, loginSuccess } from './userSlice';
 
 export const login = async (dispatch, user) => {
@@ -10,5 +11,15 @@ export const login = async (dispatch, user) => {
     dispatch(loginSuccess(res.data));
   } catch (error) {
     dispatch(loginFailure());
+  }
+};
+
+export const getProducts = async (dispatch) => {
+  dispatch(getProductStart());
+  try {
+    const res = await publicRequest.get('/products');
+    dispatch(getProductSuccess(res.data));
+  } catch (error) {
+    dispatch(getProductFailure());
   }
 };
