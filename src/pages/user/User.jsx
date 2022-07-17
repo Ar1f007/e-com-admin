@@ -5,9 +5,9 @@ import {
   PermIdentity,
   PhoneAndroid,
   Publish,
-} from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import "./user.css";
+} from '@material-ui/icons';
+import { Link } from 'react-router-dom';
+import './user.css';
 
 export default function User() {
   return (
@@ -62,43 +62,23 @@ export default function User() {
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
                 <label>Username</label>
-                <input
-                  type="text"
-                  placeholder="annabeck99"
-                  className="userUpdateInput"
-                />
+                <input type="text" placeholder="annabeck99" className="userUpdateInput" />
               </div>
               <div className="userUpdateItem">
                 <label>Full Name</label>
-                <input
-                  type="text"
-                  placeholder="Anna Becker"
-                  className="userUpdateInput"
-                />
+                <input type="text" placeholder="Anna Becker" className="userUpdateInput" />
               </div>
               <div className="userUpdateItem">
                 <label>Email</label>
-                <input
-                  type="text"
-                  placeholder="annabeck99@gmail.com"
-                  className="userUpdateInput"
-                />
+                <input type="text" placeholder="annabeck99@gmail.com" className="userUpdateInput" />
               </div>
               <div className="userUpdateItem">
                 <label>Phone</label>
-                <input
-                  type="text"
-                  placeholder="+1 123 456 67"
-                  className="userUpdateInput"
-                />
+                <input type="text" placeholder="+1 123 456 67" className="userUpdateInput" />
               </div>
               <div className="userUpdateItem">
                 <label>Address</label>
-                <input
-                  type="text"
-                  placeholder="New York | USA"
-                  className="userUpdateInput"
-                />
+                <input type="text" placeholder="New York | USA" className="userUpdateInput" />
               </div>
             </div>
             <div className="userUpdateRight">
@@ -108,10 +88,10 @@ export default function User() {
                   src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
                   alt=""
                 />
-                <label htmlFor="file">
+                <label htmlhtmlFor="file">
                   <Publish className="userUpdateIcon" />
                 </label>
-                <input type="file" id="file" style={{ display: "none" }} />
+                <input type="file" id="file" style={{ display: 'none' }} />
               </div>
               <button className="userUpdateButton">Update</button>
             </div>

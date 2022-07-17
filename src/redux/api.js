@@ -1,11 +1,17 @@
 import { publicRequest, userRequest } from '../config/axios';
 import {
+  addProductFailure,
+  addProductStart,
+  addProductSuccess,
   deleteProductFailure,
   deleteProductStart,
   deleteProductSuccess,
   getProductFailure,
   getProductStart,
   getProductSuccess,
+  updateProductFailure,
+  updateProductStart,
+  updateProductSuccess,
 } from './productSlice';
 import { loginFailure, loginStart, loginSuccess } from './userSlice';
 
@@ -38,5 +44,25 @@ export const deleteProduct = async (dispatch, id) => {
     dispatch(deleteProductSuccess(id));
   } catch (error) {
     dispatch(deleteProductFailure());
+  }
+};
+
+export const updateProduct = async (dispatch, id, product) => {
+  dispatch(updateProductStart());
+  try {
+    await userRequest.put(`/products/${id}`, { product });
+    dispatch(updateProductSuccess({ id, product }));
+  } catch (error) {
+    dispatch(updateProductFailure());
+  }
+};
+
+export const addProduct = async (dispatch, product) => {
+  dispatch(addProductStart());
+  try {
+    const res = await userRequest.post(`/products`, product);
+    dispatch(addProductSuccess(res.data));
+  } catch (error) {
+    dispatch(addProductFailure());
   }
 };
