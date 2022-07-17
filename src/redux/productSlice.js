@@ -46,6 +46,8 @@ export const productSlice = createSlice({
       state.isFetching = false;
       state.products[state.products.findIndex((item) => item._id === action.payload.id)] =
         action.payload.product;
+
+      window.location.href = '/products';
     },
     updateProductFailure: (state, action) => {
       state.isFetching = false;

@@ -1,31 +1,22 @@
 import React from 'react';
 import './topbar.css';
-import { NotificationsNone, Language, Settings } from '@material-ui/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/userSlice';
+import { Link } from 'react-router-dom';
 
 export default function Topbar() {
+  const admin = useSelector((state) => state.user.currentUser.isAdmin);
+  const dispatch = useDispatch();
   return (
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <span className="logo">e-com-admin</span>
+          <Link to="/">
+            <span className="logo">e-com-admin</span>
+          </Link>
         </div>
         <div className="topRight">
-          <div className="topbarIconContainer">
-            <NotificationsNone />
-            <span className="topIconBadge">2</span>
-          </div>
-          <div className="topbarIconContainer">
-            <Language />
-            <span className="topIconBadge">2</span>
-          </div>
-          <div className="topbarIconContainer">
-            <Settings />
-          </div>
-          <img
-            src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="topAvatar"
-          />
+          {admin && <button onClick={() => dispatch(logout())}>Logout</button>}
         </div>
       </div>
     </div>

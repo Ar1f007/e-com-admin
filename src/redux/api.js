@@ -10,7 +10,6 @@ import {
   getProductStart,
   getProductSuccess,
   updateProductFailure,
-  updateProductStart,
   updateProductSuccess,
 } from './productSlice';
 import { loginFailure, loginStart, loginSuccess } from './userSlice';
@@ -48,12 +47,12 @@ export const deleteProduct = async (dispatch, id) => {
 };
 
 export const updateProduct = async (dispatch, id, product) => {
-  dispatch(updateProductStart());
   try {
-    await userRequest.put(`/products/${id}`, { product });
-    dispatch(updateProductSuccess({ id, product }));
+    const res = await userRequest.put(`/products/${id}`, product);
+    dispatch(updateProductSuccess({ id, product: res.data }));
   } catch (error) {
     dispatch(updateProductFailure());
+    alert('Something went wrong');
   }
 };
 
