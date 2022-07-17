@@ -1,5 +1,12 @@
-import { publicRequest } from '../config/axios';
-import { getProductFailure, getProductStart, getProductSuccess } from './productSlice';
+import { publicRequest, userRequest } from '../config/axios';
+import {
+  deleteProductFailure,
+  deleteProductStart,
+  deleteProductSuccess,
+  getProductFailure,
+  getProductStart,
+  getProductSuccess,
+} from './productSlice';
 import { loginFailure, loginStart, loginSuccess } from './userSlice';
 
 export const login = async (dispatch, user) => {
@@ -21,5 +28,15 @@ export const getProducts = async (dispatch) => {
     dispatch(getProductSuccess(res.data));
   } catch (error) {
     dispatch(getProductFailure());
+  }
+};
+
+export const deleteProduct = async (dispatch, id) => {
+  dispatch(deleteProductStart());
+  try {
+    await userRequest.delete(`/products/${id}`);
+    dispatch(deleteProductSuccess(id));
+  } catch (error) {
+    dispatch(deleteProductFailure());
   }
 };
