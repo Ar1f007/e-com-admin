@@ -4,6 +4,7 @@ const initialState = {
   currentUser: null,
   isFetching: false,
   error: false,
+  users: [],
 };
 
 const userSlice = createSlice({
@@ -26,8 +27,29 @@ const userSlice = createSlice({
       state.currentUser = null;
       window.location.href = '/';
     },
+
+    getUsersStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    getUsersSuccess: (state, action) => {
+      state.isFetching = false;
+      state.users = action.payload;
+    },
+    getUsersFailure: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    },
   },
 });
 
-export const { loginStart, loginSuccess, loginFailure, logout } = userSlice.actions;
+export const {
+  loginStart,
+  loginSuccess,
+  loginFailure,
+  logout,
+  getUsersStart,
+  getUsersSuccess,
+  getUsersFailure,
+} = userSlice.actions;
 export default userSlice.reducer;

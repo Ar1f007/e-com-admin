@@ -12,7 +12,14 @@ import {
   updateProductFailure,
   updateProductSuccess,
 } from './productSlice';
-import { loginFailure, loginStart, loginSuccess } from './userSlice';
+import {
+  getUsersFailure,
+  getUsersStart,
+  getUsersSuccess,
+  loginFailure,
+  loginStart,
+  loginSuccess,
+} from './userSlice';
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
@@ -33,6 +40,16 @@ export const getProducts = async (dispatch) => {
     dispatch(getProductSuccess(res.data));
   } catch (error) {
     dispatch(getProductFailure());
+  }
+};
+
+export const getUsers = async (dispatch) => {
+  dispatch(getUsersStart());
+  try {
+    const res = await userRequest.get('/users');
+    dispatch(getUsersSuccess(res.data));
+  } catch (error) {
+    dispatch(getUsersFailure());
   }
 };
 
