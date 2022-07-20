@@ -21,10 +21,12 @@ export default function Sidebar() {
                 Products
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Orders
-            </li>
+            <Link to="/orders" className="link">
+              <li className="sidebarListItem">
+                <AttachMoney className="sidebarIcon" />
+                Orders
+              </li>
+            </Link>
 
             <Link to="/newproduct" className="link">
               <li className="sidebarListItem">
